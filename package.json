@@ -1,0 +1,24 @@
+{
+  "name": "react-native-pure-mta",
+  "version": "0.0.1",
+  "description": "react native mta",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/musicode/react-native-pure-mta.git"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "mta"
+  ],
+  "author": "musicode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/musicode/react-native-pure-mta/issues"
+  },
+  "homepage": "https://github.com/musicode/react-native-pure-mta#readme"
+}
