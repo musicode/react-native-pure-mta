@@ -10,9 +10,10 @@ export default {
    *
    * @param {string} appKey
    * @param {boolean} isDebug
+   * @param {string} channelMetaName
    */
-  start(appKey, isDebug) {
-    RNTMTA.start(appKey, isDebug || false)
+  start(appKey, isDebug, channelMetaName) {
+    RNTMTA.start(appKey, isDebug, channelMetaName)
   }
 
 }

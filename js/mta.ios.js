@@ -12,7 +12,7 @@ export default {
    * @param {boolean} isDebug
    */
   start(appKey, isDebug) {
-    RNTMTA.start(appKey, isDebug || false)
+    RNTMTA.start(appKey, isDebug)
   }
 
 }

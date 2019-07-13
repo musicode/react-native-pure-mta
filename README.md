@@ -20,38 +20,16 @@ react-native link react-native-pure-mta
 
 ### Android
 
-`android/app/build.gradle` 加上这段
-
-```
-buildTypes {
-    // 测试包
-    debug {
-        // 这里一般有一些别的配置
-
-        // 重点是这 2 个配置项
-        manifestPlaceholders = [
-            MTA_APPKEY: "appKey",
-            MTA_CHANNEL: "渠道名称"
-        ]
-    }
-    // 线上包
-    release {
-        // 这里一般有一些别的配置
-
-        // 重点是这 2 个配置项
-        manifestPlaceholders = [
-            MTA_APPKEY: "appKey",
-            MTA_CHANNEL: "渠道名称"
-        ]
-    }
-}
-```
-
-`android/app/src/main/AndroidManifest.xml` 加上 `android:usesCleartextTraffic` 和 `uses-library`。
+`android/app/src/main/AndroidManifest.xml` 加上 `android:usesCleartextTraffic`、 `meta-data`、`uses-library`。
 
 ```xml
 <application
   android:usesCleartextTraffic="true">
+
+  <!-- 安装渠道，打包工具会把渠道名称打进 android:value -->
+  <meta-data
+      android:name="mta_channel"
+      android:value="" />
 
   <uses-library
       android:name="org.apache.http.legacy"
@@ -66,9 +44,9 @@ buildTypes {
 import mta from 'react-native-pure-mta'
 
 // 启动 SDK
-// 如果要看调试信息，第二个参数传 true
-// 默认可不传
-mta.start('appKey')
+// 第二个参数表示是否输出调试信息
+// 第三个参数是安卓的多渠道打包，传入 <meta-data> 里的 android:name 的值
+mta.start('appKey', false, 'mta_channel')
 ```
 
 ## 声明
