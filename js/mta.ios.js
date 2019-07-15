@@ -29,6 +29,10 @@ export default {
 
   removeWechatAccount(openId) {
     RNTMTA.removeWechatAccount(openId)
+  },
+
+  trackCustomEvent(name, data) {
+    RNTMTA.trackCustomEvent(name, data || {})
   }
 
 }

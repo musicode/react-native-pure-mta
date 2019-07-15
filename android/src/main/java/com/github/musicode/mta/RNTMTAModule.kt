@@ -1,12 +1,11 @@
 package com.github.musicode.mta
 
 import android.content.pm.PackageManager
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.*
 import com.tencent.stat.StatConfig
 import com.tencent.stat.StatService
 import com.tencent.stat.StatMultiAccount
+import java.util.*
 
 
 class RNTMTAModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
@@ -91,6 +90,21 @@ class RNTMTAModule(private val reactContext: ReactApplicationContext) : ReactCon
     fun removeWechatAccount() {
 
         StatService.removeMultiAccount(currentActivity, StatMultiAccount.AccountType.OPEN_WEIXIN)
+
+    }
+
+    @ReactMethod
+    fun trackCustomEvent(name: String, options: ReadableMap) {
+
+        val prop = Properties()
+        val iterator = options.keySetIterator()
+
+        while (iterator.hasNextKey()) {
+            val key = iterator.nextKey()
+            prop.setProperty(key, options.getString(key))
+        }
+
+        StatService.trackCustomKVEvent(currentActivity, name, prop)
 
     }
 

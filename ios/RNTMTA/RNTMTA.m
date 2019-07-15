@@ -66,4 +66,11 @@ RCT_EXPORT_METHOD(removeWechatAccount:(NSString *)openId) {
     
 }
 
+RCT_EXPORT_METHOD(trackCustomEvent:(NSString *)name options:(NSDictionary*)options) {
+    
+    [MTA trackCustomKeyValueEvent:name
+                            props:options];
+    
+}
+
 @end

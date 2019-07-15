@@ -30,6 +30,10 @@ export default {
 
   removeWechatAccount() {
     RNTMTA.removeWechatAccount()
+  },
+
+  trackCustomEvent(name, data) {
+    RNTMTA.trackCustomEvent(name, data || {})
   }
 
 }

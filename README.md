@@ -74,6 +74,19 @@ import mta from 'react-native-pure-mta'
 // 第二个参数表示是否输出调试信息
 // 第三个参数是安卓的多渠道打包，传入 <meta-data> 里的 android:name 的值
 mta.start('appKey', false, 'mta_channel')
+
+// 如果帐号是手机号，登入登出打点
+mta.addPhoneAccount('15811112222')
+mta.removePhoneAccount('15811112222')
+
+// 如果帐号是微信 Open ID，登入登出打点
+mta.addWechatAccount(openId)
+mta.removeWechatAccount(openId)
+
+// 自定义事件
+mta.trackCustomEvent('name')
+// 如果有数据，可传第二个参数，注意，值必须是字符串
+mta.trackCustomEvent('name', { id: 'xxx' })
 ```
 
 ## 声明
