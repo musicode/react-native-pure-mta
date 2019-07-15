@@ -49,7 +49,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${safeExtGet('kotlinVersion', '1.3.21')}"
 
     implementation 'com.qq.mta:mta:3.4.7-Release'
-    implementation 'com.tencent.mid:mid:4.06-Release'
+    implementation 'com.tencent.mid:mid:4.0.7-Release'
 }
 
 apply plugin: 'kotlin-android'

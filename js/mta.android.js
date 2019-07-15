@@ -14,6 +14,22 @@ export default {
    */
   start(appKey, isDebug, channelMetaName) {
     RNTMTA.start(appKey, isDebug, channelMetaName)
+  },
+
+  addPhoneAccount(phone) {
+    RNTMTA.addPhoneAccount(phone)
+  },
+
+  removePhoneAccount() {
+    RNTMTA.removePhoneAccount()
+  },
+
+  addWechatAccount(openId) {
+    RNTMTA.addWechatAccount(openId)
+  },
+
+  removeWechatAccount() {
+    RNTMTA.removeWechatAccount()
   }
 
 }

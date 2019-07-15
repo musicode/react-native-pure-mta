@@ -20,6 +20,33 @@ react-native link react-native-pure-mta
 
 ### Android
 
+`android/app/build.gradle` 加上这段
+
+```
+buildTypes {
+    // 测试包
+    debug {
+        // 这里一般有一些别的配置
+
+        // 重点是这 2 个配置项
+        manifestPlaceholders = [
+            MTA_APPKEY: "",
+            MTA_CHANNEL: ""
+        ]
+    }
+    // 线上包
+    release {
+        // 这里一般有一些别的配置
+
+        // 重点是这 2 个配置项
+        manifestPlaceholders = [
+            MTA_APPKEY: "",
+            MTA_CHANNEL: ""
+        ]
+    }
+}
+```
+
 `android/app/src/main/AndroidManifest.xml` 加上 `android:usesCleartextTraffic`、 `meta-data`、`uses-library`。
 
 ```xml
