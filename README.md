@@ -53,11 +53,6 @@ buildTypes {
 <application
   android:usesCleartextTraffic="true">
 
-  <!-- 安装渠道，打包工具会把渠道名称打进 android:value -->
-  <meta-data
-      android:name="mta_channel"
-      android:value="" />
-
   <uses-library
       android:name="org.apache.http.legacy"
       android:required="false" />
@@ -72,8 +67,7 @@ import mta from 'react-native-pure-mta'
 
 // 启动 SDK
 // 第二个参数表示是否输出调试信息
-// 第三个参数是安卓的多渠道打包，传入 <meta-data> 里的 android:name 的值
-mta.start('appKey', false, 'mta_channel')
+mta.start('appKey', false)
 
 // 如果帐号是手机号，登入登出打点
 mta.addPhoneAccount('15811112222')
