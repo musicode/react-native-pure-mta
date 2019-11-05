@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9D32D59322D893B5003A8174 /* RNTMTA.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D32D59222D893B5003A8174 /* RNTMTA.m */; };
 		9D32D59422D893B5003A8174 /* RNTMTA.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D32D59122D893B5003A8174 /* RNTMTA.h */; };
-		9D32D5AC22D894E1003A8174 /* libmtasdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D32D5A822D894E1003A8174 /* libmtasdk.a */; };
 		9D9F01A422D89846001A631F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9F01A322D89846001A631F /* AdSupport.framework */; };
 		9D9F01A622D8984F001A631F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9F01A522D8984F001A631F /* libz.tbd */; };
 		9D9F01A822D89855001A631F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9F01A722D89855001A631F /* libsqlite3.tbd */; };
@@ -35,10 +34,6 @@
 		9D32D58E22D893B5003A8174 /* libRNTMTA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNTMTA.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D32D59122D893B5003A8174 /* RNTMTA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTMTA.h; sourceTree = "<group>"; };
 		9D32D59222D893B5003A8174 /* RNTMTA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMTA.m; sourceTree = "<group>"; };
-		9D32D5A822D894E1003A8174 /* libmtasdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmtasdk.a; sourceTree = "<group>"; };
-		9D32D5A922D894E1003A8174 /* MTA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTA.h; sourceTree = "<group>"; };
-		9D32D5AA22D894E1003A8174 /* MTA+Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTA+Account.h"; sourceTree = "<group>"; };
-		9D32D5AB22D894E1003A8174 /* MTAConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAConfig.h; sourceTree = "<group>"; };
 		9D9F01A322D89846001A631F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		9D9F01A522D8984F001A631F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9D9F01A722D89855001A631F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -58,7 +53,6 @@
 				9D9F01A822D89855001A631F /* libsqlite3.tbd in Frameworks */,
 				9D9F01A622D8984F001A631F /* libz.tbd in Frameworks */,
 				9D9F01A422D89846001A631F /* AdSupport.framework in Frameworks */,
-				9D32D5AC22D894E1003A8174 /* libmtasdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,22 +79,10 @@
 		9D32D59022D893B5003A8174 /* RNTMTA */ = {
 			isa = PBXGroup;
 			children = (
-				9D32D5A722D894C1003A8174 /* SDK */,
 				9D32D59122D893B5003A8174 /* RNTMTA.h */,
 				9D32D59222D893B5003A8174 /* RNTMTA.m */,
 			);
 			path = RNTMTA;
-			sourceTree = "<group>";
-		};
-		9D32D5A722D894C1003A8174 /* SDK */ = {
-			isa = PBXGroup;
-			children = (
-				9D32D5A822D894E1003A8174 /* libmtasdk.a */,
-				9D32D5A922D894E1003A8174 /* MTA.h */,
-				9D32D5AA22D894E1003A8174 /* MTA+Account.h */,
-				9D32D5AB22D894E1003A8174 /* MTAConfig.h */,
-			);
-			path = SDK;
 			sourceTree = "<group>";
 		};
 		9D9F01A222D89846001A631F /* Frameworks */ = {

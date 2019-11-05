@@ -9,6 +9,7 @@ SDK 版本：
 
 ```
 npm i react-native-pure-mta
+// link below 0.60
 react-native link react-native-pure-mta
 ```
 
