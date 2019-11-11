@@ -1,6 +1,6 @@
 {
   "name": "react-native-pure-mta",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "react native mta",
   "main": "index.js",
   "scripts": {

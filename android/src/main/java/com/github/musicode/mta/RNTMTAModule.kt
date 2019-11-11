@@ -1,6 +1,9 @@
 package com.github.musicode.mta
 
+import com.facebook.react.ReactActivity
 import com.facebook.react.bridge.*
+import com.facebook.react.modules.core.PermissionAwareActivity
+import com.github.herokotlin.permission.Permission
 import com.tencent.stat.StatConfig
 import com.tencent.stat.StatService
 import com.tencent.stat.StatMultiAccount
@@ -14,27 +17,53 @@ class RNTMTAModule(private val reactContext: ReactApplicationContext) : ReactCon
     }
 
     companion object {
+
         var channel = ""
+
+        private val permission = Permission(8000, listOf(android.Manifest.permission.READ_PHONE_STATE))
+
+        private var permissionListener = { requestCode: Int, permissions: Array<out String>?, grantResults: IntArray? ->
+            if (permissions != null && grantResults != null) {
+                permission.onRequestPermissionsResult(requestCode, permissions, grantResults)
+            }
+            true
+        }
+
     }
 
     @ReactMethod
     fun start(appKey: String, isDebug: Boolean) {
 
-        currentActivity?.application?.let {
+        val activity = currentActivity ?: return
+
+        val callback = {
 
             if (isDebug) {
                 StatConfig.setDebugEnable(true)
             }
 
-            StatConfig.setAppKey(it, appKey)
+            StatConfig.setAppKey(activity.application, appKey)
 
             if (channel.isNotEmpty()) {
-                StatConfig.setInstallChannel(it, channel)
+                StatConfig.setInstallChannel(activity.application, channel)
             }
 
-            StatService.registerActivityLifecycleCallbacks(it)
+            StatService.registerActivityLifecycleCallbacks(activity.application)
 
         }
+
+        permission.onPermissionsGranted = callback
+
+        permission.onRequestPermissions = { activity, list, requestCode ->
+            if (activity is ReactActivity) {
+                activity.requestPermissions(list, requestCode, permissionListener)
+            }
+            else if (activity is PermissionAwareActivity) {
+                (activity as PermissionAwareActivity).requestPermissions(list, requestCode, permissionListener)
+            }
+        }
+
+        permission.requestPermissions(activity, callback)
 
     }
 
