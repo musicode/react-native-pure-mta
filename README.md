@@ -68,6 +68,8 @@ import mta from 'react-native-pure-mta'
 
 // 启动 SDK
 // 第二个参数表示是否输出调试信息
+// 安卓调用 start 前，最好先获取 android.Manifest.permission.READ_PHONE_STATE 权限
+// 推荐使用 react-native-permissions 库
 mta.start('appKey', false)
 
 // 如果帐号是手机号，登入登出打点

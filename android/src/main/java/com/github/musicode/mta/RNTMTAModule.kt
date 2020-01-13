@@ -1,14 +1,10 @@
 package com.github.musicode.mta
 
-import com.facebook.react.ReactActivity
 import com.facebook.react.bridge.*
-import com.facebook.react.modules.core.PermissionAwareActivity
-import com.github.herokotlin.permission.Permission
 import com.tencent.stat.StatConfig
 import com.tencent.stat.StatService
 import com.tencent.stat.StatMultiAccount
 import java.util.*
-
 
 class RNTMTAModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
@@ -20,15 +16,6 @@ class RNTMTAModule(private val reactContext: ReactApplicationContext) : ReactCon
 
         var channel = ""
 
-        private val permission = Permission(8000, listOf(android.Manifest.permission.READ_PHONE_STATE))
-
-        private var permissionListener = { requestCode: Int, permissions: Array<out String>?, grantResults: IntArray? ->
-            if (permissions != null && grantResults != null) {
-                permission.onRequestPermissionsResult(requestCode, permissions, grantResults)
-            }
-            true
-        }
-
     }
 
     @ReactMethod
@@ -36,34 +23,17 @@ class RNTMTAModule(private val reactContext: ReactApplicationContext) : ReactCon
 
         val activity = currentActivity ?: return
 
-        val callback = {
-
-            if (isDebug) {
-                StatConfig.setDebugEnable(true)
-            }
-
-            StatConfig.setAppKey(activity.application, appKey)
-
-            if (channel.isNotEmpty()) {
-                StatConfig.setInstallChannel(activity.application, channel)
-            }
-
-            StatService.registerActivityLifecycleCallbacks(activity.application)
-
+        if (isDebug) {
+            StatConfig.setDebugEnable(true)
         }
 
-        permission.onPermissionsGranted = callback
+        StatConfig.setAppKey(activity.application, appKey)
 
-        permission.onRequestPermissions = { activity, list, requestCode ->
-            if (activity is ReactActivity) {
-                activity.requestPermissions(list, requestCode, permissionListener)
-            }
-            else if (activity is PermissionAwareActivity) {
-                (activity as PermissionAwareActivity).requestPermissions(list, requestCode, permissionListener)
-            }
+        if (channel.isNotEmpty()) {
+            StatConfig.setInstallChannel(activity.application, channel)
         }
 
-        permission.requestPermissions(activity, callback)
+        StatService.registerActivityLifecycleCallbacks(activity.application)
 
     }
 
